@@ -9,9 +9,14 @@ import android.view.Display;
 import android.view.WindowManager;
 
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
+import com.zity.rqxf.http.OkHttp3Stack;
+
 import java.util.HashSet;
 import java.util.Set;
 
+import okhttp3.OkHttpClient;
 
 
 /**
@@ -20,12 +25,12 @@ import java.util.Set;
 
 public class App extends Application {
     private static App instance;
+    public static RequestQueue queues;
     private Set<Activity> allActivities;
     public static int SCREEN_WIDTH = -1;
     public static int SCREEN_HEIGHT = -1;
     public static float DIMEN_RATE = -1.0F;
     public static int DIMEN_DPI = -1;
-
 
     @Override
     public void onCreate() {
@@ -35,6 +40,19 @@ public class App extends Application {
         }
         //初始化屏幕宽高
         getScreenSize();
+    }
+
+    //获取volley实例
+    public RequestQueue getHttpQueue() {
+        if (queues == null) {
+            synchronized (RequestQueue.class){
+                if (queues==null){
+                    //Volley初始化
+                    queues = Volley.newRequestQueue(getApplicationContext(),new OkHttp3Stack(new OkHttpClient()));
+                }
+            }
+        }
+        return queues;
     }
 
     // 单例获取全局Application

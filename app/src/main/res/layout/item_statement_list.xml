@@ -1,0 +1,67 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="55dp"
+                android:layout_marginTop="8dp">
+
+                <TextView
+                    android:id="@+id/item_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:text="张三"
+                    android:textColor="@color/bigtextsize"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/item_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="2017-03-23"
+                    android:textColor="@color/midtextsize"
+                    android:textSize="13sp" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/item_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="8dp"
+                android:ellipsize="end"
+                android:maxEms="15"
+                android:singleLine="true"
+                android:text="开发区智慧城市数据园区中心项目"
+                android:textColor="@color/midtextsize"
+                android:textSize="13sp" />
+
+
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="12dp"
+            android:src="@mipmap/qw" />
+    </RelativeLayout>
+
+</LinearLayout>

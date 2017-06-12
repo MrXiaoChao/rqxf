@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/iv1_left"
+            android:layout_width="7dp"
+            android:layout_height="7dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="17dp"
+            android:background="@mipmap/i_7" />
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="7dp"
+            android:layout_height="12dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="12dp"
+            android:background="@mipmap/qw" />
+
+        <TextView
+            android:id="@+id/tv_statment_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/iv1_left"
+            android:text="防火门类项目"
+            android:textColor="@color/bigtextsize"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_jian"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="30dp"
+            android:layout_toLeftOf="@id/image"
+            android:text="件"
+            android:textColor="@color/bigtextsize"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_statment_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="48dp"
+            android:layout_toLeftOf="@id/tv_jian"
+            android:textColor="#FE0002"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/backgroundColor" />
+</LinearLayout>

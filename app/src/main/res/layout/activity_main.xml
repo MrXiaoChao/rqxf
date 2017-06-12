@@ -30,9 +30,9 @@
             android:layout_marginTop="8dp"
             android:layout_weight="1"
             android:drawablePadding="1dp"
-            android:drawableTop="@drawable/tab_menu_projectflow"
+            android:drawableTop="@drawable/tab_menu_case"
             android:gravity="center"
-            android:text="代办案件"
+            android:text="待办案件"
             android:textColor="@drawable/tv_menu_color"
             android:textSize="12sp" />
 

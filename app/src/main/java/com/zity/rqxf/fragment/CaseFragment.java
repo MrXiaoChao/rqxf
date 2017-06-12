@@ -11,7 +11,7 @@ import butterknife.BindView;
 
 /**
  * Created by luochao on 2017/3/20.
- * 代办案件
+ * 待办案件
  */
 
 public class CaseFragment extends BaseFragment {
@@ -28,7 +28,7 @@ public class CaseFragment extends BaseFragment {
 
     @Override
     protected void initData() {
-        tvTooltarTitle.setText("代办案件");
+        tvTooltarTitle.setText("待办案件");
         ivToolbarBack.setVisibility(View.GONE);
     }
 }

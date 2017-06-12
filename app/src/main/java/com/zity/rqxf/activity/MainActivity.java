@@ -130,4 +130,34 @@ public class MainActivity extends BaseActivity {
         return super.onKeyUp(keyCode, event);
     }
 
+    //给homapageFragment 调用的方法
+    //切换到我的页面的方法
+    public void setButtonToFragment(){
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        hideAllFragment(transaction);
+        selected();
+        tvMine.setSelected(true);
+        if (mineFragment == null) {
+            mineFragment = new MineFragment();
+            transaction.add(R.id.fragment_container, mineFragment);
+        } else {
+            transaction.show(mineFragment);
+        }
+        transaction.commit();
+    }
+
+    //切换到待办案件页面的方法
+    public void setButtonToFragment1(){
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        hideAllFragment(transaction);
+        selected();
+        tvProject.setSelected(true);
+        if (projectFlowFragment == null) {
+            projectFlowFragment = new CaseFragment();
+            transaction.add(R.id.fragment_container, projectFlowFragment);
+        } else {
+            transaction.show(projectFlowFragment);
+        }
+        transaction.commit();
+    }
 }
