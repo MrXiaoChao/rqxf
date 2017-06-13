@@ -26,7 +26,10 @@ public class StatementListAdapter extends BaseAdapter {
         this.context = context;
         this.list = list;
     }
-
+    public void clear(List<StatementList> list){
+        list.clear();
+        notifyDataSetChanged();
+    }
     @Override
     public int getCount() {
         return list.size() == 0 ? 0 : list.size();

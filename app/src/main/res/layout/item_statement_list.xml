@@ -63,5 +63,9 @@
             android:layout_marginRight="12dp"
             android:src="@mipmap/qw" />
     </RelativeLayout>
+    <View
+        android:background="#D8D5D5"
+        android:layout_width="match_parent"
+        android:layout_height="2px"/>
 
 </LinearLayout>

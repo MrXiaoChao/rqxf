@@ -26,6 +26,7 @@
         <activity android:name=".activity.StatementActivity" />
         <activity android:name=".activity.CaseStatementActivity" />
         <activity android:name=".activity.StatementListActivity" />
+        <activity android:name=".activity.CaseStatusActivity" />
     </application>
 
 </manifest>

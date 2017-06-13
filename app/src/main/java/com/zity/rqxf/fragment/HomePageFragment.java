@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.zity.rqxf.R;
 import com.zity.rqxf.activity.CaseStatementActivity;
+import com.zity.rqxf.activity.CaseStatusActivity;
 import com.zity.rqxf.activity.MainActivity;
 import com.zity.rqxf.base.BaseFragment;
 
@@ -77,14 +78,16 @@ public class HomePageFragment extends BaseFragment {
         mineMainview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                switch (position){
+                switch (position) {
                     case 0://案件办理
                         break;
                     case 1://案件统计
-                        Intent intent =new Intent(getActivity(), CaseStatementActivity.class);
+                        Intent intent = new Intent(getActivity(), CaseStatementActivity.class);
                         startActivity(intent);
                         break;
                     case 2://案件查询
+                        Intent intent_casestatus = new Intent(getActivity(), CaseStatusActivity.class);
+                        startActivity(intent_casestatus);
                         break;
                     case 3://地区分类
                         break;
