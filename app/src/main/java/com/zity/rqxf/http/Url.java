@@ -17,6 +17,11 @@ public class Url {
     //按办理状态统计
     public static String BLZT="http://211.151.183.170:8096/petition/Mobile/getNumByCases.do?";
     //案件统计列表
-    public static String AJTJLB=" http://211.151.183.170:8096/petition/Mobile/getlist.do?";
-
+    public static String AJTJLB="http://211.151.183.170:8096/petition/Mobile/getlist.do?";
+    //信访条例
+    public static String XFTL="http://211.151.183.170:8096/petition/views/back/gonggao/ruleInfo.jsp";
+    //各部门职责列表
+    public static String GBMZZLB="http://211.151.183.170:8096/petition/Mobile/getSectorList.do";
+    //各部门职责列表详情
+    public static String GBMZZXQ="http://211.151.183.170:8096/petition/views/back/gonggao/info.jsp?";
 }

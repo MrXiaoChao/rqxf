@@ -27,6 +27,9 @@
         <activity android:name=".activity.CaseStatementActivity" />
         <activity android:name=".activity.StatementListActivity" />
         <activity android:name=".activity.CaseStatusActivity" />
+        <activity android:name=".activity.PolicyActivity" />
+        <activity android:name=".activity.WebViewActivity" />
+        <activity android:name=".activity.DepartmentActivity" />
     </application>
 
 </manifest>

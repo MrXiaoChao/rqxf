@@ -15,6 +15,7 @@ import com.zity.rqxf.R;
 import com.zity.rqxf.activity.CaseStatementActivity;
 import com.zity.rqxf.activity.CaseStatusActivity;
 import com.zity.rqxf.activity.MainActivity;
+import com.zity.rqxf.activity.PolicyActivity;
 import com.zity.rqxf.base.BaseFragment;
 
 import java.util.ArrayList;
@@ -42,9 +43,9 @@ public class HomePageFragment extends BaseFragment {
     private List<Map<String, Object>> data_list;
     private SimpleAdapter sim_adapter;
     // 图片封装为一个数组
-    private int[] icon = {R.mipmap.banli, R.mipmap.tongji, R.mipmap.chaxun, R.mipmap.fenlei, R.mipmap.anjian, R.mipmap.dianping, R.mipmap.wode,
+    private int[] icon = {R.mipmap.tongji, R.mipmap.chaxun, R.mipmap.fenlei, R.mipmap.anjian, R.mipmap.dianping, R.mipmap.wode,
             R.mipmap.fagui};
-    private String[] iconName = {"案件办理", "案件统计", "案件查询", "地区分类", "待办案件", "领导点评", "我  的",
+    private String[] iconName = {"案件统计", "案件查询", "地区分类", "待办案件", "领导点评", "我  的",
             "政策法规"};
 
 
@@ -79,29 +80,30 @@ public class HomePageFragment extends BaseFragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
-                    case 0://案件办理
-                        break;
-                    case 1://案件统计
+
+                    case 0://案件统计
                         Intent intent = new Intent(getActivity(), CaseStatementActivity.class);
                         startActivity(intent);
                         break;
-                    case 2://案件查询
+                    case 1://案件查询
                         Intent intent_casestatus = new Intent(getActivity(), CaseStatusActivity.class);
                         startActivity(intent_casestatus);
                         break;
-                    case 3://地区分类
+                    case 2://地区分类
                         break;
-                    case 4://待办案件
+                    case 3://待办案件
                         MainActivity mainActivity1 = (MainActivity) getActivity();
                         mainActivity1.setButtonToFragment1();
                         break;
-                    case 5://领导点评
+                    case 4://领导点评
                         break;
-                    case 6://我的
+                    case 5://我的
                         MainActivity mainActivity = (MainActivity) getActivity();
                         mainActivity.setButtonToFragment();
                         break;
-                    case 7://政策法规
+                    case 6://政策法规
+                        Intent intent_policy = new Intent(getActivity(), PolicyActivity.class);
+                        startActivity(intent_policy);
                         break;
 
                 }
