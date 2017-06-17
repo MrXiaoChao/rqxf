@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@id/iv1_left"
+            android:layout_toRightOf="@+id/iv1_left"
             android:text="各乡镇办件统计"
             android:textColor="@color/bigtextsize"
             android:textSize="14sp" />

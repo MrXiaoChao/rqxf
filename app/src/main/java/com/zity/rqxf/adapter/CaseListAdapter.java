@@ -9,9 +9,6 @@ import android.widget.TextView;
 
 import com.zity.rqxf.R;
 import com.zity.rqxf.bean.CaseList;
-import com.zity.rqxf.bean.StatementList;
-
-import java.util.List;
 
 /**
  * Created by luochao on 2017/6/12.
@@ -55,7 +52,7 @@ public class CaseListAdapter extends BaseAdapter {
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-        viewHolder.item_name.setText(caseList.getList().get(position).getPetitioners());
+        viewHolder.item_name.setText(caseList.getList().get(position).getLetterPerson());
         viewHolder.item_time.setText(caseList.getList().get(position).getTime());
         viewHolder.item_content.setText(caseList.getList().get(position).getContent());
         return convertView;

@@ -137,7 +137,6 @@ public class StatementActivity extends BaseActivity {
         };
         Map<String, String> map = new HashMap<>();
         map.put("userId", userId);
-
         GsonRequest<List<Statement>> request = new GsonRequest<List<Statement>>(Request.Method.POST, map, Url.XFQK, type, new Response.Listener<List<Statement>>() {
             @Override
             public void onResponse(List<Statement> list) {

@@ -57,8 +57,8 @@ public class StatementListAdapter extends BaseAdapter {
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-        viewHolder.item_name.setText(list.get(position).getPetitioners());
-        viewHolder.item_time.setText(list.get(position).getProcessingDate());
+        viewHolder.item_name.setText(list.get(position).getLetterPerson());
+        viewHolder.item_time.setText(list.get(position).getTime());
         viewHolder.item_content.setText(list.get(position).getContent());
         return convertView;
     }

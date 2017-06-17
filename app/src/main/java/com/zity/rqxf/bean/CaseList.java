@@ -11,7 +11,7 @@ public class CaseList {
 
     /**
      * count : 7
-     * list : [{"content":"问题及诉求","Id":"8311fd32-34bb-49b9-ba64-fa20dc64fb7f","time":"2017-05-31","cases":7,"status":2,"petitioners":"来访人姓名"},{"content":"123","Id":"2863f174-c5b7-4300-9009-3b4223a8a180","time":"2017-05-31","cases":2,"status":3,"petitioners":"匿名"},{"content":"问题及诉求","Id":"75a5b691-063b-4bd9-a37e-e3bbadcbb6a4","time":"2017-06-09","cases":7,"status":2,"petitioners":"大刀王五"},{"content":"问题及诉求","Id":"35efa766-f88d-47e2-9b2b-b057fe9bce22","time":"2017-06-09","cases":7,"status":2,"petitioners":"燕子李三"},{"content":"问题及诉求","Id":"fb6a75bc-0fa2-44e2-ae30-0249c2c44775","time":"2017-06-12","cases":2,"status":3,"petitioners":"匿名"},{"content":"34","Id":"24ea12c7-7415-49c6-b45e-04feb282a451","time":"2017-06-14","cases":2,"status":2,"petitioners":"匿名"},{"content":"234","Id":"90c57ae1-f1f5-429d-82d5-a66310872072","time":"2017-06-14","cases":2,"status":3,"petitioners":"匿名"}]
+     * list : [{"content":"问题及诉求","id":"8311fd32-34bb-49b9-ba64-fa20dc64fb7f","time":"2017-05-31","cases":7,"status":2,"letterPerson":"来访人姓名"},{"content":"123","id":"2863f174-c5b7-4300-9009-3b4223a8a180","time":"2017-05-31","cases":2,"status":3,"letterPerson":"匿名"},{"content":"问题及诉求","id":"75a5b691-063b-4bd9-a37e-e3bbadcbb6a4","time":"2017-06-09","cases":7,"status":2,"letterPerson":"大刀王五"},{"content":"问题及诉求","id":"35efa766-f88d-47e2-9b2b-b057fe9bce22","time":"2017-06-09","cases":7,"status":2,"letterPerson":"燕子李三"},{"content":"问题及诉求","id":"fb6a75bc-0fa2-44e2-ae30-0249c2c44775","time":"2017-06-12","cases":2,"status":3,"letterPerson":"匿名"},{"content":"34","id":"24ea12c7-7415-49c6-b45e-04feb282a451","time":"2017-06-14","cases":2,"status":2,"letterPerson":"匿名"},{"content":"234","id":"90c57ae1-f1f5-429d-82d5-a66310872072","time":"2017-06-14","cases":2,"status":3,"letterPerson":"匿名"}]
      */
 
     private int count;
@@ -36,19 +36,19 @@ public class CaseList {
     public static class ListBean {
         /**
          * content : 问题及诉求
-         * Id : 8311fd32-34bb-49b9-ba64-fa20dc64fb7f
+         * id : 8311fd32-34bb-49b9-ba64-fa20dc64fb7f
          * time : 2017-05-31
          * cases : 7
          * status : 2
-         * petitioners : 来访人姓名
+         * letterPerson : 来访人姓名
          */
 
         private String content;
-        private String Id;
+        private String leterId;
         private String time;
         private int cases;
         private int status;
-        private String petitioners;
+        private String letterPerson;
 
         public String getContent() {
             return content;
@@ -58,12 +58,12 @@ public class CaseList {
             this.content = content;
         }
 
-        public String getId() {
-            return Id;
+        public String getleterId() {
+            return leterId;
         }
 
-        public void setId(String id) {
-            this.Id = id;
+        public void setleterId(String leterId) {
+            this.leterId= leterId;
         }
 
         public String getTime() {
@@ -90,12 +90,12 @@ public class CaseList {
             this.status = status;
         }
 
-        public String getPetitioners() {
-            return petitioners;
+        public String getLetterPerson() {
+            return letterPerson;
         }
 
-        public void setPetitioners(String petitioners) {
-            this.petitioners = petitioners;
+        public void setLetterPerson(String letterPerson) {
+            this.letterPerson = letterPerson;
         }
     }
 }
