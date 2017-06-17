@@ -12,6 +12,7 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import com.zity.rqxf.R;
+import com.zity.rqxf.activity.AreaClassActivity;
 import com.zity.rqxf.activity.CaseStatementActivity;
 import com.zity.rqxf.activity.CaseStatusActivity;
 import com.zity.rqxf.activity.MainActivity;
@@ -90,6 +91,8 @@ public class HomePageFragment extends BaseFragment {
                         startActivity(intent_casestatus);
                         break;
                     case 2://地区分类
+                        Intent intent_area = new Intent(getActivity(), AreaClassActivity.class);
+                        startActivity(intent_area);
                         break;
                     case 3://待办案件
                         MainActivity mainActivity1 = (MainActivity) getActivity();

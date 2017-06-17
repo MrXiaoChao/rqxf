@@ -7,9 +7,8 @@
     <include layout="@layout/toolbar" />
 
     <ListView
-        android:divider="#00000000"
-        android:dividerHeight="0dip"
-        android:id="@+id/lv_case"
+        android:scrollbars="none"
+        android:id="@+id/lv_arealist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
     </ListView>

@@ -24,4 +24,8 @@ public class Url {
     public static String GBMZZLB="http://211.151.183.170:8096/petition/Mobile/getSectorList.do";
     //各部门职责列表详情
     public static String GBMZZXQ="http://211.151.183.170:8096/petition/views/back/gonggao/info.jsp?";
+    //代办列表
+    public static String DBLB="http://211.151.183.170:8096/petition/Mobile/getDaibanListByUserId.do?";
+    //地区分类
+    public static String DQFL=" http://211.151.183.170:8096/petition/Mobile/showArea.do?";
 }

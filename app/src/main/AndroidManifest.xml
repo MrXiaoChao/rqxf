@@ -30,6 +30,8 @@
         <activity android:name=".activity.PolicyActivity" />
         <activity android:name=".activity.WebViewActivity" />
         <activity android:name=".activity.DepartmentActivity" />
+        <activity android:name=".activity.AreaClassActivity" />
+        <activity android:name=".activity.AreaListActivity" />
     </application>
 
 </manifest>
