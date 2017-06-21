@@ -2,6 +2,8 @@ package com.zity.rqxf.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -20,6 +22,7 @@ import com.zity.rqxf.http.GsonRequest;
 import com.zity.rqxf.http.Url;
 import com.zity.rqxf.widegt.SPUtils;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -55,13 +58,26 @@ public class StatementListActivity extends BaseActivity {
         String statistical_type = intent.getStringExtra("statistical_type");
         tvTooltarTitle.setText(title);
         getDataFromService(userId, emg, statistical_type);
+        initEven();
+    }
+
+    //listview的点击事件
+    private void initEven(){
+        lvStatementList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent =new Intent(StatementListActivity.this,CaseDetailActivity.class);
+                intent.putExtra("id",list1.get(position).getLetterId());
+                startActivity(intent);
+            }
+        });
     }
 
     @OnClick(R.id.iv_toolbar_back)
     public void onClick() {
         onBackPressedSupport();
     }
-
+    private List<StatementList> list1=new ArrayList<>();
     //从服务器获取数据
     private void getDataFromService(String userId, String emg, String statistical_type) {
         TypeToken type = new TypeToken<List<StatementList>>() {
@@ -76,6 +92,7 @@ public class StatementListActivity extends BaseActivity {
             @Override
             public void onResponse(List<StatementList> list) {
                 if (list != null && list.size() > 0) {
+                    list1=list;
                     StatementListAdapter adapter = new StatementListAdapter(StatementListActivity.this, list);
                     lvStatementList.setAdapter(adapter);
                 }

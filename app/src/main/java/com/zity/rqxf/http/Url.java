@@ -28,4 +28,6 @@ public class Url {
     public static String DBLB="http://220.195.3.15:8080/petition/Mobile/getDaibanListByUserId.do?";
     //地区分类
     public static String DQFL=" http://220.195.3.15:8080/petition/Mobile/showArea.do?";
+    //信访详情
+    public static String XFXQ="http://220.195.3.15:8080/petition/Mobile/letterInfoById.do?";
 }
