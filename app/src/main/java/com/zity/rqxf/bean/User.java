@@ -8,7 +8,7 @@ public class User {
 
     /**
      * uName : 组织部市包案领导
-     * level : 1
+     * level : 1   1代表普通用户  0代表领导
      * status : true
      * userId : e9253c15-2da9-4aff-bfc1-f418f7a0f643
      * postionName : 市包案领导

@@ -25,6 +25,7 @@ import com.zity.rqxf.http.GsonRequest;
 import com.zity.rqxf.http.Url;
 import com.zity.rqxf.widegt.SPUtils;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -97,6 +98,8 @@ public class CaseDetailActivity extends BaseActivity {
     }
 
     //从服务器获取数据
+    List<CaseDetail.FunctionaryBean> functionaryBeanList = new ArrayList<>();
+
     private void getDataFromService(String id, String userID, final int cases, int status) {
         TypeToken type = new TypeToken<List<CaseDetail>>() {
         };
@@ -119,22 +122,38 @@ public class CaseDetailActivity extends BaseActivity {
                     tvFywtjsq.setText(caseDetail.getContent());
                     tvWtsd.setText(caseDetail.getProblemPossession());
                     tvSzdq.setText(caseDetail.getAddress());
-                    tvXfsj.setText(caseDetail.getProcessingDate() + "");
+                    tvXfsj.setText(caseDetail.getProcessingDate());
                     tvName.setText(caseDetail.getName());
                     tvBfyr.setText(caseDetail.getZenrenren());
-
-                    if (caseDetail.getFunctionary() != null && caseDetail.getFunctionary().size() > 1) {
+                    //list里面的对象的所有字段如果都是为空的话`就直接给删除
+                    functionaryBeanList = caseDetail.getFunctionary();
+                    if (functionaryBeanList != null && functionaryBeanList.size() > 0) {
+                        for (int i = 0; i < functionaryBeanList.size(); i++) {
+                            if (functionaryBeanList.get(i).getBananren().equals("") && functionaryBeanList.get(i).getBaoleader().equals("")
+                                    && functionaryBeanList.get(i).getBaoprincipals().equals("") && functionaryBeanList.get(i).getMunicipalMeaders().equals("")) {
+                                functionaryBeanList.remove(i);
+                            }
+                        }
+                    }
+                    if (functionaryBeanList != null && functionaryBeanList.size() > 1) {
                         tv_more.setVisibility(View.VISIBLE);
                     }
-
-                    if (caseDetail.getFunctionary() != null && caseDetail.getFunctionary().size() > 0) {
-                        CaseDetailAdapter adapter = new CaseDetailAdapter(CaseDetailActivity.this, caseDetail.getFunctionary().subList(0, 1));
+                    if (functionaryBeanList != null && functionaryBeanList.size() > 1) {
+                        CaseDetailAdapter adapter = new CaseDetailAdapter(CaseDetailActivity.this, functionaryBeanList.subList(0, 1));
+                        lvCasedetail.setAdapter(adapter);
+                        setListViewHeightBasedOnChildren(lvCasedetail);
+                    }else {
+                        CaseDetailAdapter adapter = new CaseDetailAdapter(CaseDetailActivity.this, functionaryBeanList);
                         lvCasedetail.setAdapter(adapter);
                         setListViewHeightBasedOnChildren(lvCasedetail);
                     }
+
                 }
             }
-        }, new Response.ErrorListener() {
+
+        }, new Response.ErrorListener()
+
+        {
             @Override
             public void onErrorResponse(VolleyError error) {
 
@@ -156,19 +175,29 @@ public class CaseDetailActivity extends BaseActivity {
                 break;
             case R.id.ll_fzry:
                 if (isMore) {
-                    if (caseDetail.getFunctionary() != null && caseDetail.getFunctionary().size() > 0) {
-                        tv_more.setVisibility(View.GONE);
-                        CaseDetailAdapter adapter = new CaseDetailAdapter(CaseDetailActivity.this, caseDetail.getFunctionary());
+                    if (functionaryBeanList != null && functionaryBeanList.size() > 0) {
+                        if (functionaryBeanList.size() > 1) {
+                            tv_more.setVisibility(View.GONE);
+                        }
+                        CaseDetailAdapter adapter = new CaseDetailAdapter(CaseDetailActivity.this, functionaryBeanList);
                         lvCasedetail.setAdapter(adapter);
                         setListViewHeightBasedOnChildren(lvCasedetail);
                         isMore = false;
                     }
                 } else {
-                    if (caseDetail.getFunctionary() != null && caseDetail.getFunctionary().size() > 0) {
-                        tv_more.setVisibility(View.VISIBLE);
-                        CaseDetailAdapter adapter = new CaseDetailAdapter(CaseDetailActivity.this, caseDetail.getFunctionary().subList(0, 1));
-                        lvCasedetail.setAdapter(adapter);
-                        setListViewHeightBasedOnChildren(lvCasedetail);
+                    if (functionaryBeanList != null && functionaryBeanList.size() > 0) {
+                        if (functionaryBeanList.size() > 1) {
+                            tv_more.setVisibility(View.VISIBLE);
+                        }
+                        if (functionaryBeanList != null && functionaryBeanList.size() > 1) {
+                            CaseDetailAdapter adapter = new CaseDetailAdapter(CaseDetailActivity.this, functionaryBeanList.subList(0, 1));
+                            lvCasedetail.setAdapter(adapter);
+                            setListViewHeightBasedOnChildren(lvCasedetail);
+                        }else {
+                            CaseDetailAdapter adapter = new CaseDetailAdapter(CaseDetailActivity.this, functionaryBeanList);
+                            lvCasedetail.setAdapter(adapter);
+                            setListViewHeightBasedOnChildren(lvCasedetail);
+                        }
                         isMore = true;
                     }
                 }
@@ -183,6 +212,7 @@ public class CaseDetailActivity extends BaseActivity {
     }
 
     //解决listview 跟scrollview 只显示一条数据的问题
+
     public void setListViewHeightBasedOnChildren(ListView listView) {
         // 获取ListView对应的Adapter
         ListAdapter listAdapter = listView.getAdapter();

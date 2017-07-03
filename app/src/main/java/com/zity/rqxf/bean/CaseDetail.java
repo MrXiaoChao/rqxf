@@ -52,7 +52,7 @@ public class CaseDetail {
     private String name;
     private String appeal;
     private String documentNumber;
-    private long processingDate;
+    private String processingDate;
     private String comment;
     private List<FunctionaryBean> functionary;
 
@@ -152,11 +152,11 @@ public class CaseDetail {
         this.documentNumber = documentNumber;
     }
 
-    public long getProcessingDate() {
+    public String getProcessingDate() {
         return processingDate;
     }
 
-    public void setProcessingDate(long processingDate) {
+    public void setProcessingDate(String processingDate) {
         this.processingDate = processingDate;
     }
 

@@ -6,12 +6,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 
+import com.blankj.utilcode.utils.StringUtils;
 import com.zity.rqxf.R;
 import com.zity.rqxf.bean.CaseDetail;
-import com.zity.rqxf.bean.CaseList;
+
 
 import java.util.List;
 
@@ -69,14 +69,16 @@ public class CaseDetailAdapter extends BaseAdapter {
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
+
         viewHolder.sjbald.setText(list.get(position).getMunicipalMeaders());
         viewHolder.bald.setText(list.get(position).getBaoleader());
         viewHolder.bazrr.setText(list.get(position).getBananren());
         viewHolder.bhfzr.setText(list.get(position).getBaoprincipals());
+
         if (list.size() > 1) {
             viewHolder.ll_fzry.setVisibility(View.VISIBLE);
         }
-        if (position==0){
+        if (position == 0) {
             viewHolder.ll_fzry.setVisibility(View.GONE);
         }
         return convertView;

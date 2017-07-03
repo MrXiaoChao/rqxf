@@ -65,9 +65,13 @@ public class CaseFragment extends BaseFragment {
             @Override
             public void onResponse(CaseList caseList) {
                 if (caseList != null && caseList.getList() != null) {
-                    CaseListAdapter adapter = new CaseListAdapter(getActivity(), caseList);
-                    lvCase.setAdapter(adapter);
-                }else {
+                    if (caseList.getList().size() > 0) {
+                        CaseListAdapter adapter = new CaseListAdapter(getActivity(), caseList);
+                        lvCase.setAdapter(adapter);
+                    } else {
+                        ToastUtils.showShortToast("该用户无数据");
+                    }
+                } else {
                     ToastUtils.showShortToast("该用户无数据");
                 }
             }
