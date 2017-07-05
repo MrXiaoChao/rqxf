@@ -33,6 +33,12 @@
         <activity android:name=".activity.AreaClassActivity" />
         <activity android:name=".activity.AreaListActivity" />
         <activity android:name=".activity.CaseDetailActivity" />
+        <activity android:name=".activity.DealingCaseActivity" />
+        <activity android:name=".activity.DealingCaseActivity1" />
+        <activity android:name=".activity.DealingCaseActivity2" />
+        <activity android:name=".activity.DealingCaseActivity3" />
+        <activity android:name=".activity.DealingCaseActivity4" />
+        <activity android:name=".activity.DealingCaseActivity5" />
     </application>
 
 </manifest>

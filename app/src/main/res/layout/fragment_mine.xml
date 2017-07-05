@@ -145,44 +145,6 @@
             android:background="@color/divecolor" />
 
         <RelativeLayout
-            android:id="@+id/rl_minebanli"
-            android:layout_width="match_parent"
-            android:layout_height="50dp">
-
-            <ImageView
-                android:id="@+id/iv_mine"
-                android:layout_width="17dp"
-                android:layout_height="17dp"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="12dp"
-                android:background="@mipmap/wd02" />
-
-            <ImageView
-                android:layout_width="7dp"
-                android:layout_height="12dp"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="12dp"
-                android:background="@mipmap/qw" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="5dp"
-                android:layout_toRightOf="@id/iv_mine"
-                android:text="我办理的"
-                android:textColor="@color/midtextsize"
-                android:textSize="16sp" />
-        </RelativeLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginLeft="15dp"
-            android:background="@color/divecolor" />
-
-        <RelativeLayout
             android:id="@+id/rl_loginout"
             android:layout_width="match_parent"
             android:layout_height="50dp">

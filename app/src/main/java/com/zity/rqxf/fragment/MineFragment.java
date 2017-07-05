@@ -16,7 +16,6 @@ import com.zity.rqxf.widegt.SPUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 
 
 /**
@@ -33,8 +32,6 @@ public class MineFragment extends BaseFragment {
     RelativeLayout rlPassword;
     @BindView(R.id.rl_lddp)
     RelativeLayout rlLddp;
-    @BindView(R.id.rl_minebanli)
-    RelativeLayout rlMinebanli;
     @BindView(R.id.rl_loginout)
     RelativeLayout rlLoginout;
     @BindView(R.id.tv_name)
@@ -43,7 +40,6 @@ public class MineFragment extends BaseFragment {
     TextView tvOrgname;
     @BindView(R.id.tv_uName)
     TextView tvUName;
-    Unbinder unbinder;
 
 
     @Override
@@ -65,7 +61,7 @@ public class MineFragment extends BaseFragment {
     }
 
 
-    @OnClick({R.id.rl_password, R.id.rl_lddp, R.id.rl_minebanli, R.id.rl_loginout})
+    @OnClick({R.id.rl_password, R.id.rl_lddp, R.id.rl_loginout})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.rl_password://修改密码
@@ -73,8 +69,6 @@ public class MineFragment extends BaseFragment {
                 startActivity(intent);
                 break;
             case R.id.rl_lddp://领导点评
-                break;
-            case R.id.rl_minebanli://我的办理
                 break;
             case R.id.rl_loginout://退出登录
                 final MyDialog dialog = new MyDialog(getActivity());
@@ -98,5 +92,4 @@ public class MineFragment extends BaseFragment {
                 break;
         }
     }
-
 }

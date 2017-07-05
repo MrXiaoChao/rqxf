@@ -10,38 +10,30 @@ import java.util.List;
 public class CaseDetail {
 
     /**
-     * phone : 13212321232
-     * status : 999
+     * phone : 13582770102
      * repeats : 初
-     * stage : 2017-06-16--卫生部--责任单位接收
-     2017-06-10--信访局--信访局处理
-     2017-06-09--卫生部--责任单位退回
-     2017-06-09--卫生部--责任单位接收
-     2017-06-09--信访局--结案申请通过
-     2017-06-09--组织部--责任单位结案申请
-     2017-06-09--信访局--处理意见审核通过
-     2017-06-09--组织部--责任单位处理意见申请
-     2017-06-09--信访局--延期申请审核通过
-     2017-06-09--组织部--责任单位延期申请
-     2017-06-09--组织部--责任单位受理
-     2017-06-09--组织部--责任单位接收
-     2017-06-09--信访局--信访局处理
+     * stage : 2017-06-22--信访局--结案申请通过
+     2017-06-22--开发区--责任单位结案申请
+     2017-06-22--信访局--处理意见审核通过
+     2017-06-22--开发区--责任单位处理意见申请
+     2017-06-22--开发区--责任单位受理
+     2017-06-22--开发区--责任单位接收
+     2017-06-22--信访局--信访局处理
 
-     * zenrenren : weqweqw
-     * content : owowoow
-     * functionary : [{"baoprincipals":"4546","baoleader":"2342","bananren":"组织部办案人","municipalMeaders":"2342"},{"baoprincipals":"guichongsunzi2","baoleader":"guisunzi","bananren":"组织部办案人","municipalMeaders":"guierzi"},{"baoprincipals":"","baoleader":"","bananren":"","municipalMeaders":""}]
-     * problemPossession : owowoow
-     * address : owowoow
-     * letterProperty : 领导访
-     * name : owowoow
+     * zenrenren : 开发区
+     * content : 关于开发区八村张顺反映村西开发区400亩地没有公开招投标被卖，且村内账上没有的问题。
+     * functionary : [{"baoprincipals":"李四","baoleader":"赵振华","bananren":"开发区群众服务中心","municipalMeaders":"王晓刚"}]
+     * problemPossession : 开发区
+     * address : 开发区八村
+     * letterProperty : 来访
+     * name : 张顺
      * appeal : 本市信访
-     * documentNumber : 132123212321234561
-     * processingDate : 1496937600000
-     * comment : 点评
+     * documentNumber : 130903198801021234
+     * processingDate : 2017-06-22
+     * buttonList : [{"statusId":16,"statusName":"点评"}]
      */
 
     private String phone;
-    private int status;
     private String repeats;
     private String stage;
     private String zenrenren;
@@ -53,8 +45,8 @@ public class CaseDetail {
     private String appeal;
     private String documentNumber;
     private String processingDate;
-    private String comment;
     private List<FunctionaryBean> functionary;
+    private List<ButtonListBean> buttonList;
 
     public String getPhone() {
         return phone;
@@ -62,14 +54,6 @@ public class CaseDetail {
 
     public void setPhone(String phone) {
         this.phone = phone;
-    }
-
-    public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
     }
 
     public String getRepeats() {
@@ -160,14 +144,6 @@ public class CaseDetail {
         this.processingDate = processingDate;
     }
 
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
-
     public List<FunctionaryBean> getFunctionary() {
         return functionary;
     }
@@ -176,12 +152,20 @@ public class CaseDetail {
         this.functionary = functionary;
     }
 
+    public List<ButtonListBean> getButtonList() {
+        return buttonList;
+    }
+
+    public void setButtonList(List<ButtonListBean> buttonList) {
+        this.buttonList = buttonList;
+    }
+
     public static class FunctionaryBean {
         /**
-         * baoprincipals : 4546
-         * baoleader : 2342
-         * bananren : 组织部办案人
-         * municipalMeaders : 2342
+         * baoprincipals : 李四
+         * baoleader : 赵振华
+         * bananren : 开发区群众服务中心
+         * municipalMeaders : 王晓刚
          */
 
         private String baoprincipals;
@@ -219,6 +203,32 @@ public class CaseDetail {
 
         public void setMunicipalMeaders(String municipalMeaders) {
             this.municipalMeaders = municipalMeaders;
+        }
+    }
+
+    public static class ButtonListBean {
+        /**
+         * statusId : 16
+         * statusName : 点评
+         */
+
+        private int statusId;
+        private String statusName;
+
+        public int getStatusId() {
+            return statusId;
+        }
+
+        public void setStatusId(int statusId) {
+            this.statusId = statusId;
+        }
+
+        public String getStatusName() {
+            return statusName;
+        }
+
+        public void setStatusName(String statusName) {
+            this.statusName = statusName;
         }
     }
 }
