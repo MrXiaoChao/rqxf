@@ -141,17 +141,18 @@ public class CaseDetailActivity extends BaseActivity {
                     tvBfyr.setText(caseDetail.getZenrenren());
                     //list里面的对象的所有字段如果都是为空的话`就直接给删除
                     functionaryBeanList = caseDetail.getFunctionary();
-                    if (functionaryBeanList != null && functionaryBeanList.size() > 0) {
-                        for (int i = 0; i < functionaryBeanList.size(); i++) {
-                            if (functionaryBeanList.get(i).getBananren().equals("") && functionaryBeanList.get(i).getBaoleader().equals("")
-                                    && functionaryBeanList.get(i).getBaoprincipals().equals("") && functionaryBeanList.get(i).getMunicipalMeaders().equals("")) {
-                                functionaryBeanList.remove(i);
-                            }
-                        }
-                    }
+//                    if (functionaryBeanList != null && functionaryBeanList.size() > 0) {
+//                        for (int i = 0; i < functionaryBeanList.size(); i++) {
+//                            if (functionaryBeanList.get(i).getBananren().equals("") && functionaryBeanList.get(i).getBaoleader().equals("")
+//                                    && functionaryBeanList.get(i).getBaoprincipals().equals("") && functionaryBeanList.get(i).getMunicipalMeaders().equals("")) {
+//                                functionaryBeanList.remove(i);
+//                            }
+//                        }
+//                    }
                     if (functionaryBeanList != null && functionaryBeanList.size() > 1) {
                         tv_more.setVisibility(View.VISIBLE);
                     }
+                    
                     if (functionaryBeanList != null && functionaryBeanList.size() > 1) {
                         CaseDetailAdapter adapter = new CaseDetailAdapter(CaseDetailActivity.this, functionaryBeanList.subList(0, 1));
                         lvCasedetail.setAdapter(adapter);
@@ -352,7 +353,7 @@ public class CaseDetailActivity extends BaseActivity {
                         startActivity(intent8);
                         break;
                     case 9://反馈历史
-                        Intent intent9 = new Intent(CaseDetailActivity.this, DealingCaseActivity5.class);
+                        Intent intent9 = new Intent(CaseDetailActivity.this, DealingCaseActivity6.class);
                         intent9.putExtra("flag", "9");
                         intent9.putExtra("id", id);
                         startActivity(intent9);

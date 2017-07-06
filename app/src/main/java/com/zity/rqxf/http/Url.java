@@ -60,4 +60,12 @@ public class Url {
     public static String THAN=BaseURL+"/Mobile/caseReturn.do?";
     //修改责任人回显
     public static String XGZRRHX=BaseURL+"/Mobile/showPrincipal.do?";
+    //修改负责人
+    public static String XGZRR=BaseURL+"/Mobile/updatePrincipal.do?";
+    //办案人反馈
+    public static String BARFK=BaseURL+"/Mobile/addFeedback.do?";
+    //反馈历史
+    public static String BARFKLS=BaseURL+"/Mobile/unitfeedbackHis.do?";
+
+
 }

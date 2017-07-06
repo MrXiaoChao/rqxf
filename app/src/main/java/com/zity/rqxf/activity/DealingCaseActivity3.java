@@ -26,6 +26,7 @@ import com.zity.rqxf.app.App;
 import com.zity.rqxf.base.BaseActivity;
 import com.zity.rqxf.bean.Jasq;
 import com.zity.rqxf.bean.Jasqhx;
+import com.zity.rqxf.bean.Success;
 import com.zity.rqxf.http.GsonRequest;
 import com.zity.rqxf.http.Url;
 import com.zity.rqxf.widegt.SPUtils;
@@ -179,40 +180,32 @@ public class DealingCaseActivity3 extends BaseActivity {
         App.getInstance().getHttpQueue().add(request);
     }
 
-
     //结案申请
-    private void sendJasq(final String id, final String code, final String userId, final String preopinion, final String petitionerOpinion, final String setTime, final String petitionerContent) {
-        StringRequest request = new StringRequest(Request.Method.POST, Url.JASQ, new Response.Listener<String>() {
+    private void sendJasq(String id,String code, String userId, String preopinion, String petitionerOpinion, String setTime, String petitionerContent) {
+        Map<String, String> map = new HashMap<>();
+        map.put("id", id);
+        map.put("code", code);
+        map.put("userId", userId);
+        map.put("opinion", preopinion);
+        map.put("content", petitionerOpinion);
+        map.put("setTime", setTime);
+        map.put("petitionerContent", petitionerContent);
+        GsonRequest<Success> request =new GsonRequest<Success>(Request.Method.POST, map, Url.JASQ, Success.class, new Response.Listener<Success>() {
             @Override
-            public void onResponse(String response) {
-                if (response != null) {
-                    if (StringUtils.equals("false", response)) {
-                        ToastUtils.showShortToast("申请失败");
-                    } else {
-                        ToastUtils.showShortToast("申请成功");
-                        onBackPressedSupport();
-                    }
+            public void onResponse(Success response) {
+                if (response.isStutas()) {
+                    ToastUtils.showShortToast(response.getMsg());
+                    onBackPressedSupport();
+                } else {
+                    ToastUtils.showShortToast(response.getMsg());
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                String a = error.getMessage();
+
             }
-        }) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> map = new HashMap<>();
-                map.put("id", id);
-                map.put("code", code);
-                map.put("userId", userId);
-                map.put("preopinion", preopinion);
-                map.put("petitionerOpinion", petitionerOpinion);
-                map.put("setTime", setTime);
-                map.put("petitionerContent", petitionerContent);
-                return map;
-            }
-        };
+        });
         App.getInstance().getHttpQueue().add(request);
     }
 
@@ -241,17 +234,20 @@ public class DealingCaseActivity3 extends BaseActivity {
     }
 
     //结案审核提交
-    private void sendDataToService(final String userId, final String id, final String finaleOpinion, final String style) {
-        StringRequest request = new StringRequest(Request.Method.POST, Url.JASHTJ, new Response.Listener<String>() {
+    private void sendDataToService(String userId,String id,String finaleOpinion,String style) {
+        Map<String, String> map = new HashMap<>();
+        map.put("userId", userId);
+        map.put("id", id);
+        map.put("finaleOpinion", finaleOpinion);
+        map.put("style", style);
+        GsonRequest<Success> request =new GsonRequest<Success>(Request.Method.POST, map, Url.JASHTJ, Success.class, new Response.Listener<Success>() {
             @Override
-            public void onResponse(String response) {
-                if (response != null) {
-                    if (StringUtils.equals("false", response)) {
-                        ToastUtils.showShortToast("申请失败");
-                    } else {
-                        ToastUtils.showShortToast("申请成功");
-                        onBackPressedSupport();
-                    }
+            public void onResponse(Success response) {
+                if (response.isStutas()) {
+                    ToastUtils.showShortToast(response.getMsg());
+                    onBackPressedSupport();
+                } else {
+                    ToastUtils.showShortToast(response.getMsg());
                 }
             }
         }, new Response.ErrorListener() {
@@ -259,17 +255,7 @@ public class DealingCaseActivity3 extends BaseActivity {
             public void onErrorResponse(VolleyError error) {
 
             }
-        }) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> map = new HashMap<>();
-                map.put("userId", userId);
-                map.put("id", id);
-                map.put("finaleOpinion", finaleOpinion);
-                map.put("style", style);
-                return map;
-            }
-        };
+        });
         App.getInstance().getHttpQueue().add(request);
     }
 

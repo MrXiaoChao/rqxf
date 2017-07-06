@@ -23,6 +23,7 @@ import com.zity.rqxf.R;
 import com.zity.rqxf.app.App;
 import com.zity.rqxf.base.BaseActivity;
 import com.zity.rqxf.bean.Shenhe;
+import com.zity.rqxf.bean.Success;
 import com.zity.rqxf.http.GsonRequest;
 import com.zity.rqxf.http.Url;
 import com.zity.rqxf.widegt.SPUtils;
@@ -128,7 +129,7 @@ public class DealingCaseActivity extends BaseActivity {
                 if (StringUtils.equals(flag, "11")) {
                     sendSQtoService(id, day, opinio);
                 } else {
-                    sendSHSQtoService(selectText,id,userId,yy);
+                    sendSHSQtoService(selectText, id, userId, yy);
                 }
                 break;
             case R.id.btn_quxiao:
@@ -138,33 +139,28 @@ public class DealingCaseActivity extends BaseActivity {
     }
 
     //延期申请
-    private void sendSQtoService(final String childId, final String days, final String opinio) {
-        StringRequest request = new StringRequest(Request.Method.POST, Url.XQSQ, new Response.Listener<String>() {
+    private void sendSQtoService(String childId, String days, String opinio) {
+        Map<String, String> map = new HashMap<>();
+        map.put("userId", userId);
+        map.put("childId", childId);
+        map.put("days", days);
+        map.put("opinio", opinio);
+        GsonRequest<Success> request = new GsonRequest<Success>(Request.Method.POST, map, Url.XQSQ, Success.class, new Response.Listener<Success>() {
             @Override
-            public void onResponse(String response) {
-                if (StringUtils.equals("false", response)) {
-                    ToastUtils.showShortToast("申请失败");
-                } else {
-                    ToastUtils.showShortToast("申请成功");
+            public void onResponse(Success response) {
+                if (response.isStutas()) {
+                    ToastUtils.showShortToast(response.getMsg());
                     onBackPressedSupport();
+                } else {
+                    ToastUtils.showShortToast(response.getMsg());
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                String e = error.getMessage();
+
             }
-        }) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> map = new HashMap<>();
-                map.put("userId", userId);
-                map.put("childId", childId);
-                map.put("days", days);
-                map.put("opinio", opinio);
-                return map;
-            }
-        };
+        });
         App.getInstance().getHttpQueue().add(request);
     }
 
@@ -191,33 +187,28 @@ public class DealingCaseActivity extends BaseActivity {
     }
 
     //延期申请审核
-    private void sendSHSQtoService(final String select, final String id, final String userid, final String rejectReason) {
-       StringRequest request =new StringRequest(Request.Method.POST, Url.XQSHSQ, new Response.Listener<String>() {
-           @Override
-           public void onResponse(String response) {
-               if (StringUtils.equals("false", response)) {
-                   ToastUtils.showShortToast("申请失败");
-               } else {
-                   ToastUtils.showShortToast("申请成功");
-                   onBackPressedSupport();
-               }
-           }
-       }, new Response.ErrorListener() {
-           @Override
-           public void onErrorResponse(VolleyError error) {
+    private void sendSHSQtoService(String select,  String id,  String userid,  String rejectReason) {
+        Map<String, String> map = new HashMap<>();
+        map.put("select", select);
+        map.put("id", id);
+        map.put("userId", userid);
+        map.put("rejectReason", rejectReason);//
+        GsonRequest<Success> request =new GsonRequest<Success>(Request.Method.POST, map, Url.XQSHSQ, Success.class, new Response.Listener<Success>() {
+            @Override
+            public void onResponse(Success response) {
+                if (response.isStutas()) {
+                    ToastUtils.showShortToast(response.getMsg());
+                    onBackPressedSupport();
+                } else {
+                    ToastUtils.showShortToast(response.getMsg());
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
 
-           }
-       }){
-           @Override
-           protected Map<String, String> getParams() throws AuthFailureError {
-               Map<String,String> map =new HashMap<>();
-               map.put("select",select);
-               map.put("id",id);
-               map.put("userId",userid);
-               map.put("rejectReason",rejectReason);
-               return map;
-           }
-       };
-       App.getInstance().getHttpQueue().add(request);
+            }
+        });
+        App.getInstance().getHttpQueue().add(request);
     }
 }

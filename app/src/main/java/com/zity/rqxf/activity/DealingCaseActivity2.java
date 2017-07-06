@@ -20,6 +20,7 @@ import com.blankj.utilcode.utils.ToastUtils;
 import com.zity.rqxf.R;
 import com.zity.rqxf.app.App;
 import com.zity.rqxf.base.BaseActivity;
+import com.zity.rqxf.bean.Success;
 import com.zity.rqxf.bean.Yijiansh;
 import com.zity.rqxf.http.GsonRequest;
 import com.zity.rqxf.http.Url;
@@ -120,13 +121,13 @@ public class DealingCaseActivity2 extends BaseActivity {
                 onBackPressedSupport();
                 break;
             case R.id.btn_dianpin:
-                String opinion=etBlqk.getText().toString().trim();
-                String preoinion=etNblyj.getText().toString().trim();
-                String opinion1=etYy.getText().toString().trim();
+                String opinion = etBlqk.getText().toString().trim();
+                String preoinion = etNblyj.getText().toString().trim();
+                String opinion1 = etYy.getText().toString().trim();
                 if (StringUtils.equals("12", flag)) {
-                   sendNBSQ(id,userId,opinion,preoinion);
+                    sendNBSQ(id, userId, opinion, preoinion);
                 } else {
-                    sendNBSH(selectText,id,userId,opinion1);
+                    sendNBSH(selectText, id, userId, opinion1);
                 }
                 break;
             case R.id.btn_quxiao:
@@ -134,16 +135,22 @@ public class DealingCaseActivity2 extends BaseActivity {
                 break;
         }
     }
+
     //拟办申请
-    private void sendNBSQ(final String id, final String userId, final String opinion , final String preopinion){
-        StringRequest request =new StringRequest(Request.Method.POST, Url.NBSQ, new Response.Listener<String>() {
+    private void sendNBSQ(String id, String userId, String opinion, String preopinion) {
+        Map<String, String> map = new HashMap<>();
+        map.put("id", id);
+        map.put("userId", userId);
+        map.put("opinion", opinion);
+        map.put("preopinion", preopinion);
+        GsonRequest<Success> request = new GsonRequest<Success>(Request.Method.POST, map, Url.NBSQ, Success.class, new Response.Listener<Success>() {
             @Override
-            public void onResponse(String response) {
-                if (StringUtils.equals("false", response)) {
-                    ToastUtils.showShortToast("申请失败");
-                } else {
-                    ToastUtils.showShortToast("申请成功");
+            public void onResponse(Success response) {
+                if (response.isStutas()) {
+                    ToastUtils.showShortToast(response.getMsg());
                     onBackPressedSupport();
+                } else {
+                    ToastUtils.showShortToast(response.getMsg());
                 }
             }
         }, new Response.ErrorListener() {
@@ -151,27 +158,18 @@ public class DealingCaseActivity2 extends BaseActivity {
             public void onErrorResponse(VolleyError error) {
 
             }
-        }){
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String,String> map =new HashMap<>();
-                map.put("id",id);
-                map.put("userId",userId);
-                map.put("opinion",opinion);
-                map.put("preopinion",preopinion);
-                return map;
-            }
-        };
+        });
         App.getInstance().getHttpQueue().add(request);
     }
+
     //处理意见审核回显
-    private void getDataFromService(){
-        Map<String,String> map =new HashMap<>();
-        map.put("id",id);
-        GsonRequest<Yijiansh> request =new GsonRequest<Yijiansh>(Request.Method.POST, map, Url.SHHX, Yijiansh.class, new Response.Listener<Yijiansh>() {
+    private void getDataFromService() {
+        Map<String, String> map = new HashMap<>();
+        map.put("id", id);
+        GsonRequest<Yijiansh> request = new GsonRequest<Yijiansh>(Request.Method.POST, map, Url.SHHX, Yijiansh.class, new Response.Listener<Yijiansh>() {
             @Override
             public void onResponse(Yijiansh response) {
-                if (response!=null){
+                if (response != null) {
                     etBar.setText(response.getName());
                     etBlqk.setText(response.getOpinion());
                     etNblyj.setText(response.getPreopinion());
@@ -185,16 +183,22 @@ public class DealingCaseActivity2 extends BaseActivity {
         });
         App.getInstance().getHttpQueue().add(request);
     }
+
     //拟办申请审核
-    private void sendNBSH(final String style, final String id, final String userId, final String opinion){
-        StringRequest request =new StringRequest(Request.Method.POST, Url.NBSQSH, new Response.Listener<String>() {
+    private void sendNBSH(String style, String id, String userId, String opinion) {
+        Map<String, String> map = new HashMap<>();
+        map.put("style", style);
+        map.put("id", id);
+        map.put("userId", userId);
+        map.put("reason", opinion);
+        GsonRequest<Success> request =new GsonRequest<Success>(Request.Method.POST, map, Url.NBSQSH, Success.class, new Response.Listener<Success>() {
             @Override
-            public void onResponse(String response) {
-                if (StringUtils.equals("false", response)) {
-                    ToastUtils.showShortToast("申请失败");
-                } else {
-                    ToastUtils.showShortToast("申请成功");
+            public void onResponse(Success response) {
+                if (response.isStutas()) {
+                    ToastUtils.showShortToast(response.getMsg());
                     onBackPressedSupport();
+                } else {
+                    ToastUtils.showShortToast(response.getMsg());
                 }
             }
         }, new Response.ErrorListener() {
@@ -202,17 +206,7 @@ public class DealingCaseActivity2 extends BaseActivity {
             public void onErrorResponse(VolleyError error) {
 
             }
-        }){
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String,String> map =new HashMap<>();
-                map.put("style",style);
-                map.put("id",id);
-                map.put("userId",userId);
-                map.put("reason",opinion);
-                return map;
-            }
-        };
+        });
         App.getInstance().getHttpQueue().add(request);
     }
 }

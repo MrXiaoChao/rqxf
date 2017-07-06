@@ -194,7 +194,7 @@ public class CaseDetail {
         }
 
         public void setBananren(String bananren) {
-            this.bananren = bananren;
+            this.bananren = (bananren!=null)?bananren:"";
         }
 
         public String getMunicipalMeaders() {

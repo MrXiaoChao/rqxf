@@ -39,6 +39,7 @@
         <activity android:name=".activity.DealingCaseActivity3" />
         <activity android:name=".activity.DealingCaseActivity4" />
         <activity android:name=".activity.DealingCaseActivity5" />
+        <activity android:name=".activity.DealingCaseActivity6" />
     </application>
 
 </manifest>
