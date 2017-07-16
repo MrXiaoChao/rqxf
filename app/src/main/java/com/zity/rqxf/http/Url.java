@@ -66,6 +66,7 @@ public class Url {
     public static String BARFK=BaseURL+"/Mobile/addFeedback.do?";
     //反馈历史
     public static String BARFKLS=BaseURL+"/Mobile/unitfeedbackHis.do?";
-
+    //信访处理
+    public static String XFCL=BaseURL+"/Mobile/departList.do?";
 
 }

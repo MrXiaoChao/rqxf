@@ -42,7 +42,7 @@ public class AreaClassActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-
+        tvTooltarTitle.setText("地区分类");
     }
 
 
@@ -70,6 +70,7 @@ public class AreaClassActivity extends BaseActivity {
                 Intent intent4=new Intent(AreaClassActivity.this,AreaListActivity.class);
                 intent4.putExtra("title","经济发展类");
                 startActivity(intent4);
+                
                 break;
             case R.id.ll_dqzwl1:
                 Intent intent5=new Intent(AreaClassActivity.this,AreaListActivity.class);

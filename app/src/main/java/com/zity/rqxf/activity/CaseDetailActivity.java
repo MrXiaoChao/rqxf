@@ -1,14 +1,11 @@
 package com.zity.rqxf.activity;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -152,7 +149,7 @@ public class CaseDetailActivity extends BaseActivity {
                     if (functionaryBeanList != null && functionaryBeanList.size() > 1) {
                         tv_more.setVisibility(View.VISIBLE);
                     }
-                    
+
                     if (functionaryBeanList != null && functionaryBeanList.size() > 1) {
                         CaseDetailAdapter adapter = new CaseDetailAdapter(CaseDetailActivity.this, functionaryBeanList.subList(0, 1));
                         lvCasedetail.setAdapter(adapter);
@@ -263,11 +260,8 @@ public class CaseDetailActivity extends BaseActivity {
         View listItem = listAdapter.getView(0, null, gridView);
         listItem.measure(0, 0);
         totalHeight = listItem.getMeasuredHeight() + 9;
-
         int yu = count % columns;
-
         ViewGroup.LayoutParams params = gridView.getLayoutParams();
-
         if (yu > 0) {
             params.height = (count - yu) / columns * (totalHeight + 9) + totalHeight;
         } else {
@@ -316,6 +310,10 @@ public class CaseDetailActivity extends BaseActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long Id) {
                 switch (btnlist.get(position).getStatusId()) {
                     case 1://信访处理
+                        Intent intent1 = new Intent(CaseDetailActivity.this, DealingCaseActivity7.class);
+                        intent1.putExtra("flag", "1");
+                        intent1.putExtra("id", id);
+                        startActivity(intent1);
                         break;
                     case 2://延期审核
                         Intent intent2 = new Intent(CaseDetailActivity.this, DealingCaseActivity.class);
@@ -387,6 +385,10 @@ public class CaseDetailActivity extends BaseActivity {
                     case 15://责任单位处理
                         break;
                     case 16://点评
+                        Intent intent = new Intent(CaseDetailActivity.this, DealingCaseActivity7.class);
+                        intent.putExtra("flag", "1");
+                        intent.putExtra("id", id);
+                        startActivity(intent);
                         break;
                 }
             }
